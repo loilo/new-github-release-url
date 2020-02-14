@@ -34,6 +34,7 @@
 		"params"
 	],
 	"dependencies": {
+		"escape-goat": "^3.0.0",
 		"type-fest": "^0.4.1"
 	},
 	"devDependencies": {
@@ -41,5 +42,10 @@
 		"open": "^6.1.0",
 		"tsd": "^0.7.2",
 		"xo": "^0.24.0"
+	},
+	"xo": {
+		"rules": {
+			"import/no-unresolved": "off"
+		}
 	}
 }

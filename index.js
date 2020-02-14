@@ -1,5 +1,7 @@
 'use strict';
 
+const {htmlEscape} = require('escape-goat');
+
 module.exports = (options = {}) => {
 	let repoUrl;
 	if (options.repoUrl) {
@@ -21,13 +23,17 @@ module.exports = (options = {}) => {
 	];
 
 	for (let type of types) {
-		const value = options[type];
+		let value = options[type];
 		if (value === undefined) {
 			continue;
 		}
 
 		if (type === 'isPrerelease') {
 			type = 'prerelease';
+		}
+
+		if (type === 'body') {
+			value = htmlEscape(value);
 		}
 
 		url.searchParams.set(type, value);

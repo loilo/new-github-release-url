@@ -24,7 +24,7 @@ test('main', t => {
 
 test('repoUrl option', t => {
 	const repoUrl = 'https://github.com/sindresorhus/test';
-	const body = 'Hello';
+	const body = 'Hello <World />';
 
 	const urlString = newGithubReleaseUrl({
 		repoUrl,
@@ -34,7 +34,7 @@ test('repoUrl option', t => {
 	const {searchParams} = new URL(urlString);
 
 	t.true(urlString.startsWith(repoUrl));
-	t.is(searchParams.get('body'), body);
+	t.is(searchParams.get('body'), 'Hello &lt;World /&gt;');
 });
 
 test('throws when required options are not specified', t => {
